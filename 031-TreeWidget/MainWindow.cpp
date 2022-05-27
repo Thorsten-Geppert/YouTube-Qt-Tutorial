@@ -1,6 +1,6 @@
 #include "MainWindow.h"
 #include "./ui_MainWindow.h"
-#include <QLineEdit>
+#include <QSpinBox>
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -17,33 +17,48 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QTreeWidgetItem *item = new QTreeWidgetItem;
-    item->setText(0, "Erna");
-    item->setText(1, "Meier");
-    item->setText(2, "49");
-    
-    item->setCheckState(0, Qt::CheckState::Checked);
-    item->setCheckState(1, Qt::CheckState::Checked);
-    item->setCheckState(2, Qt::CheckState::Checked);
-    
-    ui->treeWidget->topLevelItem(1)->addChild(item);
+    ui->treeWidget->topLevelItem(0)->setFirstColumnSpanned(true);
 }
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    for(int i = 0; i < ui->treeWidget->topLevelItemCount(); i++) {
-		ui->treeWidget->expandItem(ui->treeWidget->topLevelItem(i));
-    }
+    QTreeWidgetItem *item = new QTreeWidgetItem;
+    item->setText(0, "Erna");
+    item->setText(1, "Geppert");
+    item->setText(2, "5");
+    
+    ui->treeWidget->topLevelItem(0)->addChild(item);
 }
 
 
 void MainWindow::on_pushButton_3_clicked()
 {
-	const int counter = ui->treeWidget->topLevelItemCount();
-	for(int i = 0; i < counter; i++) {
-		list(ui->treeWidget->topLevelItem(i));
+    QTreeWidgetItem *topLevelItem = new QTreeWidgetItem(
+		ui->treeWidget,
+		QStringList() << "Familie Meier (Eltern und Kinder)"
+	);
+	topLevelItem->setFirstColumnSpanned(true);
+	
+	for(int i = 0; i < 4; i++) {
+		new QTreeWidgetItem(
+			topLevelItem,
+			QStringList()
+				<< QString("Vorname %1").arg(i)
+				<< QString("Nachname %1").arg(i)
+				<< QString::number((i + 1) * 3)
+		);
 	}
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    for(int i = 0; i < ui->treeWidget->topLevelItemCount(); i++) {
+		ui->treeWidget->expandItem(ui->treeWidget->topLevelItem(i));
+    }
+    
+	//ui->treeWidget->expandAll();
 }
 
 void MainWindow::log(QTreeWidgetItem *item)
@@ -51,8 +66,7 @@ void MainWindow::log(QTreeWidgetItem *item)
 	if(item) {
 		QString line;
 		for(int i = 0; i < item->columnCount(); i++)
-			line.append(item->text(i) + " -> ");
-		line.append("END");
+			line.append(item->text(i) + ":");
 		ui->plainTextEdit->appendPlainText(line);
 	}
 }
@@ -67,15 +81,28 @@ void MainWindow::list(QTreeWidgetItem *item)
 }
 
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_pushButton_5_clicked()
 {
-    QTreeWidgetItem *item = new QTreeWidgetItem;
-    item->setText(0, "Das ist");
-    item->setText(1, "eine Eingabe:");
-    
-	ui->treeWidget->topLevelItem(1)->addChild(item);
-    ui->treeWidget->setItemWidget(item, 2, new QLineEdit);
-    
-    
+    for(int i = 0; i < ui->treeWidget->topLevelItemCount(); i++)
+		list(ui->treeWidget->topLevelItem(i));
+}
+
+
+void MainWindow::on_pushButton_6_clicked()
+{
+	QSpinBox *spinBox = nullptr;
+	QTreeWidgetItem *item = nullptr;
+    for(int i = 0; i < ui->treeWidget->topLevelItemCount(); i++) {
+		for(int j = 0; j < ui->treeWidget->topLevelItem(i)->childCount(); j++) {
+			item = ui->treeWidget->topLevelItem(i)->child(j);
+			
+			spinBox = new QSpinBox;
+			spinBox->setMinimum(0);
+			spinBox->setMaximum(130);
+			spinBox->setValue(item->text(2).toInt());
+			
+			ui->treeWidget->setItemWidget(item, 2, spinBox);
+		}
+    }
 }
 

@@ -14,150 +14,118 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTreeWidget" name="treeWidget">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>40</y>
-      <width>671</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <column>
-     <property name="text">
-      <string>Vorname</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Nachname</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Alter</string>
-     </property>
-    </column>
-    <item>
-     <property name="text">
-      <string>Familie Geppert</string>
-     </property>
-     <item>
-      <property name="text">
-       <string>Thorsten</string>
-      </property>
-      <property name="text">
-       <string>Geppert</string>
-      </property>
-      <property name="text">
-       <string>20</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Francis</string>
-      </property>
-      <property name="text">
-       <string>Geppert</string>
-      </property>
-      <property name="text">
-       <string>6</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Skyler</string>
-      </property>
-      <property name="text">
-       <string>Geppert</string>
-      </property>
-      <property name="text">
-       <string>3</string>
-      </property>
-     </item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTreeWidget" name="treeWidget">
+        <column>
+         <property name="text">
+          <string>Vorname</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Nachname</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Alter</string>
+         </property>
+        </column>
+        <item>
+         <property name="text">
+          <string>Familie Geppert (Eltern und Kinder)</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>Thorsten</string>
+          </property>
+          <property name="text">
+           <string>Geppert</string>
+          </property>
+          <property name="text">
+           <string>43</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Alana</string>
+          </property>
+          <property name="text">
+           <string>Geppert</string>
+          </property>
+          <property name="text">
+           <string>40</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Horst</string>
+          </property>
+          <property name="text">
+           <string>Geppert</string>
+          </property>
+          <property name="text">
+           <string>12</string>
+          </property>
+         </item>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Spalten zusammenfügen</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Erna Geppert hinzufügen</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>Familie Meier hinzufügen</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Toplevel-Items ausklappen</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>Baum ausgeben</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_6">
+          <property name="text">
+           <string>SpinBox einfügen</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPlainTextEdit" name="plainTextEdit"/>
+      </item>
+     </layout>
     </item>
-    <item>
-     <property name="text">
-      <string>Familie Meier</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <item>
-      <property name="text">
-       <string>Kalle</string>
-      </property>
-      <property name="text">
-       <string>Meier</string>
-      </property>
-      <property name="text">
-       <string>53</string>
-      </property>
-     </item>
-    </item>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>250</y>
-      <width>141</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Füge Erna hinzu</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>250</y>
-      <width>241</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Top-Level-Items ausklappen</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>250</y>
-      <width>100</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ausgeben</string>
-    </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>310</y>
-      <width>641</width>
-      <height>221</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>250</y>
-      <width>151</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Widget einfügen</string>
-    </property>
-   </widget>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
